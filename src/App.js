@@ -8,6 +8,7 @@ import BarChartPropByState from "./components/BarChartPropByState";
 import MobileAlert from "./components/MobileAlert";
 import BarChartPropByStateSkeleton from "./components/BarChartPropByStateSkeleton";
 import Table from "./components/Table";
+import LineCountPerYear from "./components/LineCountPerYear";
 
 function App() {
   const date = "12/20/22";
@@ -51,7 +52,6 @@ function App() {
     }
     return countYears;
   };
-  data && console.log(getPropPerYear());
 
   return (
     <div className="w-full bg-brutalBeige App">
@@ -114,7 +114,8 @@ function App() {
         ) : (
           <>
             <BarChartPropByState data={getCountPerState} date={date} />
-            <Table apiData={data} />
+            <LineCountPerYear apiData={data} />
+            <Table apiData={data} state={getCountPerState} />
           </>
         )}
       </main>

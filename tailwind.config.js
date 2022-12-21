@@ -15,6 +15,8 @@ module.exports = {
         brutalBlue: "#38dbff",
         brutalRed: "#ff5d5d",
         brutalBeige: "#f5ebd7",
+        brutalPurple: "#7385de",
+        brutalPeach: "#7385de",
       },
     },
   },

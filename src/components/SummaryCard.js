@@ -1,6 +1,5 @@
 import React from "react";
-const random = Math.floor(Math.random() * 2);
-console.log(random);
+
 const SummaryCard = ({ title, numbers, date }) => {
   return (
     <div
