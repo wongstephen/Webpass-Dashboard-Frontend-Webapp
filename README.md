@@ -11,7 +11,7 @@ http://wpdash.wongstephenk.com/
 ### Planned Implementations
 
 - Responsive Design for Mobile
-- Data Filtering!
+- Data Filtering
 - Data Pagination
 - Data Export
 - Customization options
@@ -21,5 +21,4 @@ http://wpdash.wongstephenk.com/
 
 ### Screenshot(s)
 
-[FireShot Capture 002 - Webpass Data Dashboard - wpdash wongstephenk com](https://user-images.githubusercontent.com/20288105/209023208-4e55b17b-0ec4-49f7-ab54-9596c4825010.jpg)
-
+![FireShot Capture 002 - Webpass Data Dashboard - wpdash wongstephenk com](https://user-images.githubusercontent.com/20288105/209023251-f31d50b9-ee79-4b65-8e9a-427872a33787.jpg)
