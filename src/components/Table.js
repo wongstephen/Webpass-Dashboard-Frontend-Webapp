@@ -50,7 +50,7 @@ const Table = ({ apiData }) => {
     []
   );
   const data = apiData.map((property) => {
-    const date = new Date(property.created_at).toDateString("en-US");
+    const date = new Date(property.created_at);
 
     return {
       id: property.id,
@@ -58,7 +58,7 @@ const Table = ({ apiData }) => {
       city: property.city_state.split(", ")[0],
       state: property.city_state.split(", ")[1],
       zip: property.zip,
-      created: date,
+      created: `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`,
     };
   });
   const tableInstance = useTable({ columns, data });
@@ -66,8 +66,10 @@ const Table = ({ apiData }) => {
     tableInstance;
   return (
     <div className="flex flex-wrap w-full mt-16 bg-white border-4 border-black rounded-md shadow-neub">
-      <div className="flex-1 w-full h-20 bg-red-600 border-b-4">
-        Full List of Addresses
+      <div className="flex items-center justify-center flex-1 w-full h-20 border-b-4 border-black bg-brutalGreen">
+        <p className="font-bold text-center md:text-4xl ">
+          Full List of Addresses
+        </p>
       </div>
       <div className="w-full p-8">
         <table {...getTableProps()} className="w-full">

@@ -3,7 +3,7 @@ import React from "react";
 const MobileAlert = () => {
   return (
     <div
-      className="flex flex-col items-center w-full gap-4 p-4 mx-auto transition-all border-4 border-black rounded-lg sm:gap-12 sm:flex-row lg:hidden mt-14 shadow-neub"
+      className="flex flex-col items-center w-full gap-4 p-4 mx-auto transition-all bg-white border-4 border-black rounded-lg sm:gap-12 sm:flex-row lg:hidden mt-14 shadow-neub"
       name="alert"
       data-testid="alert-component"
     >
