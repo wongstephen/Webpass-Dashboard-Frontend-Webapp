@@ -1,8 +1,11 @@
 import React from "react";
-
+const random = Math.floor(Math.random() * 2);
+console.log(random);
 const SummaryCard = ({ title, numbers, date }) => {
   return (
-    <div className="flex flex-col items-center justify-start pb-16 bg-white border-4 border-black rounded-md w-72 shadow-neub ">
+    <div
+      className={`flex flex-col items-center justify-start pb-16 bg-white border-4 border-black rounded-md w-72 shadow-neub -rotate-1`}
+    >
       <div className="w-full p-4 font-bold text-center border-b-4 border-black rounded-t-md bg-brutalYellow">
         <h2 className="text-lg"> {title}</h2>
       </div>

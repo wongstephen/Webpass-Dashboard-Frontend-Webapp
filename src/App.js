@@ -36,6 +36,23 @@ function App() {
     return [...new Set(cities)].length;
   };
 
+  const getPropPerYear = () => {
+    const years = data.map((property) => {
+      const year = new Date(property.created_at).getFullYear();
+      return year;
+    });
+    const uniqueYears = [...new Set(years)];
+    const countYears = {};
+    for (let year of uniqueYears) {
+      const countYear = years.filter((el) => {
+        return el === year;
+      }).length;
+      countYears[year] = countYear;
+    }
+    return countYears;
+  };
+  data && console.log(getPropPerYear());
+
   return (
     <div className="w-full bg-brutalBeige App">
       <Header />
@@ -55,14 +72,35 @@ function App() {
                 title={"Total Properties"}
                 date={date}
               />
+
+              <SummaryCard
+                numbers={
+                  getPropPerYear()[new Date().getFullYear()] -
+                  getPropPerYear()[new Date().getFullYear() - 1]
+                }
+                title={"YOY Properties Aquisition"}
+                date={date}
+              />
+              <SummaryCard
+                numbers={getPropPerYear()[new Date().getFullYear()]}
+                title={"YTD Properties Aquisition"}
+                date={date}
+              />
+              <SummaryCard
+                numbers={Math.round(
+                  getPropPerYear()[new Date().getFullYear()] / 12
+                )}
+                title={"YTD Aquisitions Per Month"}
+                date={date}
+              />
               <SummaryCard
                 numbers={Object.keys(getCountPerState()).length}
-                title={"States Deployed"}
+                title={"# States Footprint"}
                 date={date}
               />
               <SummaryCard
                 numbers={getCitiesNum()}
-                title={"Cities Deployed"}
+                title={"# Cities Footprint"}
                 date={date}
               />
             </>

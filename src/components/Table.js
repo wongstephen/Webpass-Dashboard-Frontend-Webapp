@@ -1,25 +1,7 @@
 import React from "react";
-import { useTable } from "react-table";
+import { useTable, usePagination } from "react-table";
 
 const Table = ({ apiData }) => {
-  //   const data = React.useMemo(
-  //     () => [
-  //       {
-  //         col1: "1",
-  //         col2: "World",
-  //         col3: "Yo",
-  //       },
-  //       {
-  //         col1: "react-table",
-  //         col2: "rocks",
-  //       },
-  //       {
-  //         col1: "whatever",
-  //         col2: "you want",
-  //       },
-  //     ],
-  //     []
-  //   );
   const columns = React.useMemo(
     () => [
       {
