@@ -13,9 +13,7 @@ import LineCountPerYear from "./components/LineCountPerYear";
 function App() {
   const date = "12/20/22";
 
-  const { data, loading, err } = useFetch(
-    "https://lobster-app-sscw2.ondigitalocean.app/"
-  );
+  const { data, loading, err } = useFetch(process.env.REACT_APP_API);
 
   const getCountPerState = () => {
     let propertyPerState = {};
