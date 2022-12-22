@@ -1,7 +1,6 @@
 import React from "react";
 import LineChart from "./LineChart";
 import getPropPerYear from "./functions/getPropByYear";
-import { nodeModuleNameResolver } from "typescript";
 
 const LineCountPerYear = ({ apiData, date }) => {
   const yearsPropertyCount = getPropPerYear(apiData);
@@ -104,9 +103,8 @@ const LineCountPerYear = ({ apiData, date }) => {
           Total Properties Served by Year
         </p>
       </div>
-      <div>
-        <LineChart chartData={chartData} options={chartOptions} />
-      </div>
+
+      <LineChart chartData={chartData} options={chartOptions} />
     </div>
   );
 };
