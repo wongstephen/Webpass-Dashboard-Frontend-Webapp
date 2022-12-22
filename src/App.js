@@ -7,7 +7,7 @@ import SummaryCardSkeleton from "./components/SummaryCardSkeleton";
 import BarChartPropByState from "./components/BarChartPropByState";
 import MobileAlert from "./components/MobileAlert";
 import BarChartPropByStateSkeleton from "./components/BarChartPropByStateSkeleton";
-import Table from "./components/Table";
+import WpTable from "./components/WpTable";
 import LineCountPerYear from "./components/LineCountPerYear";
 
 function App() {
@@ -113,7 +113,7 @@ function App() {
           <>
             <BarChartPropByState data={getCountPerState} date={date} />
             <LineCountPerYear apiData={data} />
-            <Table apiData={data} state={getCountPerState} />
+            <WpTable apiData={data} state={getCountPerState} />
           </>
         )}
       </main>
