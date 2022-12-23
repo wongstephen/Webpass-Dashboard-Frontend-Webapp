@@ -9,6 +9,7 @@ import MobileAlert from "./components/MobileAlert";
 import BarChartPropByStateSkeleton from "./components/BarChartPropByStateSkeleton";
 import WpTable from "./components/WpTable";
 import LineCountPerYear from "./components/LineCountPerYear";
+import TopNewProp from "./components/TopNewProp";
 
 function App() {
   const date = "12/20/22";
@@ -42,6 +43,7 @@ function App() {
     });
     const uniqueYears = [...new Set(years)];
     const countYears = {};
+
     for (let year of uniqueYears) {
       const countYear = years.filter((el) => {
         return el === year;
@@ -111,6 +113,12 @@ function App() {
           <BarChartPropByStateSkeleton />
         ) : (
           <>
+            <div className="flex w-full gap-4 mt-12">
+              <div className="flex-1 bg-blue-500">
+                <TopNewProp data={data} />
+              </div>
+              {/* <div className="w-1/2 bg-blue-500">sdf</div> */}
+            </div>
             <BarChartPropByState data={getCountPerState} date={date} />
             <LineCountPerYear apiData={data} />
             <WpTable apiData={data} state={getCountPerState} />
