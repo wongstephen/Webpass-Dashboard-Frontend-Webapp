@@ -10,6 +10,7 @@ import BarChartPropByStateSkeleton from "./components/BarChartPropByStateSkeleto
 import WpTable from "./components/WpTable";
 import LineCountPerYear from "./components/LineCountPerYear";
 import TopNewProp from "./components/TopNewProp";
+import PieYTDAquisitions from "./components/PieYTDAquisitions";
 
 function App() {
   const date = "12/20/22";
@@ -114,10 +115,12 @@ function App() {
         ) : (
           <>
             <div className="flex w-full gap-4 mt-12">
-              <div className="flex-1 bg-blue-500">
+              <div className="flex-1">
                 <TopNewProp data={data} />
               </div>
-              {/* <div className="w-1/2 bg-blue-500">sdf</div> */}
+              <div className="flex-1">
+                <PieYTDAquisitions data={data} />
+              </div>
             </div>
             <BarChartPropByState data={getCountPerState} date={date} />
             <LineCountPerYear apiData={data} />
