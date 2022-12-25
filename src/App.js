@@ -114,11 +114,11 @@ function App() {
           <BarChartPropByStateSkeleton />
         ) : (
           <>
-            <div className="flex w-full gap-4 mt-12">
-              <div className="flex-1">
+            <div className="flex flex-wrap w-full gap-4 mt-12">
+              <div className="flex-1 w-full">
                 <TopNewProp data={data} />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 w-full">
                 <PieYTDAquisitions data={data} />
               </div>
             </div>

@@ -4,10 +4,10 @@ import { useTable, usePagination } from "react-table";
 const WPTable = ({ apiData }) => {
   const columns = React.useMemo(
     () => [
-      {
-        Header: "ID",
-        accessor: "id",
-      },
+      // {
+      //   Header: "ID",
+      //   accessor: "id",
+      // },
       {
         Header: "Address",
         accessor: "addr",
@@ -35,12 +35,15 @@ const WPTable = ({ apiData }) => {
     const date = new Date(property.created_at);
 
     return {
-      id: property.id,
+      // id: property.id,
       addr: property.address,
       city: property.city_state.split(", ")[0],
       state: property.city_state.split(", ")[1],
       zip: property.zip,
-      created: `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`,
+      created: `${date.getMonth()}-${date.getDay()}-${date
+        .getFullYear()
+        .toString()
+        .substring(2)}`,
     };
   });
 
@@ -73,24 +76,6 @@ const WPTable = ({ apiData }) => {
     // Table UI
     return (
       <>
-        {/* The following is for debugging */}
-        {/* 
-        <pre>
-          <code>
-            {JSON.stringify(
-              {
-                pageIndex,
-                pageSize,
-                pageCount,
-                canNextPage,
-                canPreviousPage,
-              },
-              null,
-              2
-            )}
-          </code>
-        </pre> 
-        */}
         <table {...getTableProps()} className="w-full">
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -237,6 +222,9 @@ const WPTable = ({ apiData }) => {
     );
   };
 
+  const options = {
+    reponsive: true,
+  };
   return (
     <div className="flex flex-wrap w-full mt-16 bg-white border-4 border-black rounded-md shadow-neub">
       <div className="flex items-center justify-center flex-1 w-full h-20 border-b-4 border-black bg-brutalGreen">
@@ -246,7 +234,7 @@ const WPTable = ({ apiData }) => {
       </div>
       <Filter />
       <div className="w-full p-8 mt-18">
-        <Table columns={columns} data={data} />
+        <Table columns={columns} data={data} options={options} />
       </div>
     </div>
   );
