@@ -24,10 +24,10 @@ const WPTable = ({ apiData }) => {
         Header: "Zip",
         accessor: "zip",
       },
-      {
-        Header: "Created",
-        accessor: "created",
-      },
+      // {
+      //   Header: "Created",
+      //   accessor: "created",
+      // },
     ],
     []
   );

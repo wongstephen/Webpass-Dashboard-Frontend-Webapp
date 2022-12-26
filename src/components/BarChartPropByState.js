@@ -18,16 +18,17 @@ const BarChartPropByState = ({ data, date }) => {
         backgroundColor: ["#ffb443"],
         hoverBackgroundColor: ["#ffb44395"],
         borderColor: "black",
-        borderWidth: 4,
+        borderWidth: 2,
         hoverBorderWidth: 6,
         minBarLength: 10,
+        borderRadius: 5,
       },
     ],
   };
 
   let chartOptions = {
     categoryPercentage: 1,
-    barPercentage: 0.9,
+    barPercentage: 0.5,
     scales: {
       x: {
         grid: {
@@ -39,7 +40,7 @@ const BarChartPropByState = ({ data, date }) => {
         ticks: {
           color: "black",
           font: {
-            size: 25,
+            size: 10,
             weight: "bold",
           },
         },
@@ -47,7 +48,7 @@ const BarChartPropByState = ({ data, date }) => {
       },
       y: {
         min: 0,
-        max: 800,
+        max: 1500,
         label: "test",
         grid: {
           color: "#7385de20",
@@ -57,7 +58,7 @@ const BarChartPropByState = ({ data, date }) => {
         ticks: {
           color: "black",
           font: {
-            size: 15,
+            size: 10,
             weight: "bold",
           },
           align: "end",
@@ -71,7 +72,7 @@ const BarChartPropByState = ({ data, date }) => {
       },
     },
     layout: {
-      padding: 25,
+      // padding: 25,
     },
     resizeDelay: 1000,
     plugins: {
