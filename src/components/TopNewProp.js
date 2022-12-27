@@ -22,7 +22,10 @@ const TopTenTable = (data) => {
                 <td>{el.address}</td>
                 <td>{el.city_state.split(", ")[0]}</td>
                 <td>{el.city_state.split(", ")[1]}</td>
-                <td>{date.toLocaleDateString()}</td>
+                <td>{`${date.getMonth()}/${date.getDate()}/${date
+                  .getFullYear()
+                  .toString()
+                  .substring(2)}`}</td>
               </tr>
             );
           })}

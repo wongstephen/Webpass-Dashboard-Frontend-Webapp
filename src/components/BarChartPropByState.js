@@ -1,11 +1,14 @@
 import React from "react";
 import BarChart from "./BarChart";
 
-const BarChartPropByState = ({ data, date }) => {
-  const sorted = Object.keys(data())
+// calculations
+import getCountPerState from "./functions/getCountPerState";
+
+const BarChartPropByState = ({ apiData }) => {
+  const sorted = Object.keys(getCountPerState(apiData))
     .sort()
     .reduce((acc, key) => {
-      acc[key] = data()[key];
+      acc[key] = getCountPerState(apiData)[key];
       return acc;
     }, {});
 

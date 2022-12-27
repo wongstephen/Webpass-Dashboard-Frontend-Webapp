@@ -107,7 +107,7 @@ const WPTable = ({ apiData }) => {
           Pagination can be built however you'd like. 
           This is just a very basic UI implementation:
         */}
-        <div className="flex items-center justify-center w-full mx-auto mt-8">
+        <div className="flex flex-wrap items-center justify-center w-full mx-auto mt-8">
           <button
             className="px-2 py-1 mr-2 border-4 border-black shadow-neub bg-brutalBlue"
             onClick={() => gotoPage(0)}
@@ -189,7 +189,7 @@ const WPTable = ({ apiData }) => {
             d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
           />
         </svg>
-
+        {/* 
         <p className="inline ml-8 text-lg font-bold">Filter By</p>
         <span className="p-6 ml-4 font-bold tracking-wider text-white bg-purple-600 border-4 border-black rounded-md shadow-neub">
           {" "}
@@ -217,7 +217,7 @@ const WPTable = ({ apiData }) => {
               );
             }
           )}
-        </div>
+        </div> */}
       </div>
     );
   };
