@@ -106,7 +106,7 @@ const App = () => {
               <TopNewProp data={data} />
             </div>
             <div className="flex-1 w-full">
-              <PieYTDAquisitions data={data} />
+              <PieYTDAquisitions apiData={data} />
             </div>
           </div>
           <BarChartPropByState apiData={data} date={date} />

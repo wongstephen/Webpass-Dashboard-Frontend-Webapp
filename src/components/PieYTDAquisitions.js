@@ -4,7 +4,7 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieYTDAquisitions = ({ data: apiData }) => {
+const PieYTDAquisitions = ({ apiData }) => {
   //Count YTD properties
   const getYTDbyState = () => {
     const YTDData = apiData.filter((el) => {
