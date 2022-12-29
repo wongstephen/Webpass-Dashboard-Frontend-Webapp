@@ -11,7 +11,6 @@ const SummaryCard = ({ title, numbers, date }) => {
       <p className="mt-8 font-extrabold text-7xl md:text-8xl">
         {numbers.toLocaleString("en-US")}
       </p>
-      <p className="mt-8 text-xs font-light text-gray-500">As of {date}</p>
     </div>
   );
 };

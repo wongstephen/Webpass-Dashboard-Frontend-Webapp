@@ -3,13 +3,12 @@ import "./App.css";
 
 // Components
 import BarChartPropByState from "./components/BarChartPropByState";
-import BarChartPropByStateSkeleton from "./components/BarChartPropByStateSkeleton";
 import Header from "./components/Header";
 import LineCountPerYear from "./components/LineCountPerYear";
 import MobileAlert from "./components/MobileAlert";
 import PieYTDAquisitions from "./components/PieYTDAquisitions";
+import Loading from "./components/Loading";
 import SummaryCard from "./components/SummaryCard";
-import SummaryCardSkeleton from "./components/SummaryCardSkeleton";
 import TopNewProp from "./components/TopNewProp";
 import WpTable from "./components/WpTable";
 
@@ -54,50 +53,42 @@ const App = () => {
     }
     return countYears;
   };
-
   return (
     <div className="w-full bg-brutalBeige App">
       <Header />
-      {loading && <p>loading...</p>}
+
+      {loading && <Loading />}
+
       {!loading && error && <p>something went wrong...</p>}
+
       {!loading && !error && (
         <main className="relative max-w-5xl px-4 mx-auto mx:px-0 -top-40">
           <div className="flex flex-wrap justify-center w-full gap-4 md:px-0 lg:justify-between">
-            {" "}
-            <SummaryCard
-              numbers={data.length}
-              title={"Total Properties"}
-              date={date}
-            />
+            <SummaryCard numbers={data.length} title={"Total Properties"} />
             <SummaryCard
               numbers={
                 getPropPerYear()[new Date().getFullYear()] -
                 getPropPerYear()[new Date().getFullYear() - 1]
               }
               title={"YOY Properties Aquisition"}
-              date={date}
             />
             <SummaryCard
               numbers={getPropPerYear()[new Date().getFullYear()]}
               title={"YTD Properties Aquisition"}
-              date={date}
             />
             <SummaryCard
               numbers={Math.round(
                 getPropPerYear()[new Date().getFullYear()] / 12
               )}
               title={"YTD Aquisitions Per Month"}
-              date={date}
             />
             <SummaryCard
               numbers={Object.keys(getCountPerState(data)).length}
               title={"# States Footprint"}
-              date={date}
             />
             <SummaryCard
               numbers={getCitiesNum()}
               title={"# Cities Footprint"}
-              date={date}
             />
           </div>
           <MobileAlert />
