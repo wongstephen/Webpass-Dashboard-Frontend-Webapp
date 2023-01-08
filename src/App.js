@@ -65,7 +65,7 @@ const App = () => {
         <main className="relative max-w-5xl px-4 mx-auto mx:px-0 -top-40">
           <div className="flex flex-wrap justify-center w-full gap-4 md:px-0 lg:justify-between">
             <SummaryCard numbers={data.length} title={"Total Properties"} />
-            <SummaryCard
+            {/* <SummaryCard
               numbers={
                 getPropPerYear()[new Date().getFullYear()] -
                 getPropPerYear()[new Date().getFullYear() - 1]
@@ -81,7 +81,7 @@ const App = () => {
                 getPropPerYear()[new Date().getFullYear()] / 12
               )}
               title={"YTD Aquisitions Per Month"}
-            />
+            /> */}
             <SummaryCard
               numbers={Object.keys(getCountPerState(data)).length}
               title={"# States Footprint"}

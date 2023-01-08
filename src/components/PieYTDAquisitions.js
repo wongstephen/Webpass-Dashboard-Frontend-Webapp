@@ -23,8 +23,6 @@ const PieYTDAquisitions = ({ apiData }) => {
     return stateObj;
   };
 
-  getYTDbyState();
-
   const data = {
     labels: Object.keys(getYTDbyState()),
     datasets: [
@@ -68,7 +66,11 @@ const PieYTDAquisitions = ({ apiData }) => {
       <div className="flex items-center justify-center h-24 border-b-4 border-black bg-brutalGreen">
         <p className="font-bold text-center md:text-4xl ">YTD Properties</p>
       </div>
-      <Pie data={data} options={options} />
+      {getYTDbyState().length == 0 ? (
+        <Pie data={data} options={options} />
+      ) : (
+        <p className="mt-4 text-center">No YTD yet for this year...</p>
+      )}
     </div>
   );
 };
