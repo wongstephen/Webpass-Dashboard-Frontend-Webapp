@@ -90,3 +90,4 @@ The web app retrieves data from a node.js server using Axios. The Api data from 
 
 - This site is currently hosted on netlify.com.
 - The domain is passed through nginx proxy_pass to netlify.com
+- Hosting backend on digital ocean vps via node express server.
