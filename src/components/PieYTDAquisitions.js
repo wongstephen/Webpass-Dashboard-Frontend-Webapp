@@ -5,13 +5,13 @@ import { Pie } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieYTDAquisitions = ({ apiData }) => {
-  //Count YTD properties
   const getYTDbyState = () => {
     const YTDData = apiData.filter((el) => {
       const elDate = new Date(el.created_at).getFullYear();
       const thisYear = new Date().getFullYear();
       return elDate === thisYear;
     });
+
     const stateObj = {};
     for (let x of YTDData) {
       if (stateObj[x.city_state.split(", ")[1]]) {
@@ -20,6 +20,7 @@ const PieYTDAquisitions = ({ apiData }) => {
         stateObj[x.city_state.split(", ")[1]] = 1;
       }
     }
+
     return stateObj;
   };
 
@@ -66,7 +67,7 @@ const PieYTDAquisitions = ({ apiData }) => {
       <div className="flex items-center justify-center h-24 border-b-4 border-black bg-brutalGreen">
         <p className="font-bold text-center md:text-4xl ">YTD Properties</p>
       </div>
-      {getYTDbyState().length == 0 ? (
+      {getYTDbyState().length !== 0 ? (
         <Pie data={data} options={options} />
       ) : (
         <p className="mt-4 text-center">No YTD yet for this year...</p>
