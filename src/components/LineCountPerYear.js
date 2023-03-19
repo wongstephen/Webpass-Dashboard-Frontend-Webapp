@@ -1,6 +1,7 @@
 import React from "react";
 import LineChart from "./LineChart";
 import getPropPerYear from "./functions/getPropByYear";
+import CardLayout from "./CardLayout";
 
 const LineCountPerYear = ({ apiData, date }) => {
   const yearsPropertyCount = getPropPerYear(apiData);
@@ -18,11 +19,11 @@ const LineCountPerYear = ({ apiData, date }) => {
       {
         label: "No. of Properties",
         data: countPerYearAcculated,
-        backgroundColor: ["#ffb443"],
-        hoverBackgroundColor: ["#ffb44395"],
+        backgroundColor: ["#006EF3"],
+        hoverBackgroundColor: ["#006EF395"],
         borderColor: "black",
-        borderWidth: 4,
-        hoverBorderWidth: 4,
+        borderWidth: 1,
+        hoverBorderWidth: 1,
         borderRadius: 1,
       },
     ],
@@ -30,7 +31,7 @@ const LineCountPerYear = ({ apiData, date }) => {
 
   let chartOptions = {
     categoryPercentage: 1,
-    barPercentage: 0.9,
+    barPercentage: 0.25,
     scales: {
       x: {
         grid: {
@@ -43,8 +44,8 @@ const LineCountPerYear = ({ apiData, date }) => {
           color: "#black",
           textAlign: "center",
           font: {
-            size: 20,
-            weight: "bold",
+            size: 12,
+            // weight: "light",
           },
           align: "start",
         },
@@ -59,8 +60,8 @@ const LineCountPerYear = ({ apiData, date }) => {
         ticks: {
           color: "black",
           font: {
-            size: 15,
-            weight: "bold",
+            size: 12,
+            // weight: "bold",
           },
           align: "end",
         },
@@ -72,40 +73,27 @@ const LineCountPerYear = ({ apiData, date }) => {
         duration: 15000,
       },
     },
-    layout: {
-      padding: {
-        top: 25,
-        left: 25,
-        bottom: 25,
-        right: 75,
-      },
-    },
+
     resizeDelay: 1000,
     plugins: {
       legend: {
         display: false,
       },
-      subtitle: {
-        display: true,
-        text: "Year over year properties gained",
-        padding: {
-          top: 0,
-          bottom: 15,
-        },
-      },
+      // subtitle: {
+      //   display: true,
+      //   text: "Total Properties by Year (Cummulative)",
+      //   padding: {
+      //     top: 0,
+      //     // bottom: 15,
+      //   },
+      // },
     },
   };
 
   return (
-    <div className="mt-12 bg-white border-4 border-black rounded-md shadow-neub">
-      <div className="flex flex-col items-center justify-center w-full h-24 border-b-4 border-black bg-brutalPurple font-Roboto">
-        <p className="font-bold text-center md:text-4xl ">
-          Total Properties Served by Year
-        </p>
-      </div>
-
+    <CardLayout title="Total Properties Served by Year">
       <LineChart chartData={chartData} options={chartOptions} />
-    </div>
+    </CardLayout>
   );
 };
 
