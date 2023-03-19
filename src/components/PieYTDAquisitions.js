@@ -1,6 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import CardLayout from "./CardLayout";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -44,16 +45,9 @@ const PieYTDAquisitions = ({ apiData }) => {
           "#00ff7550",
           "#dd7dff50",
         ],
-        // borderColor: [
-        //   "rgba(255, 99, 132, 1)",
-        //   "rgba(54, 162, 235, 1)",
-        //   "rgba(255, 206, 86, 1)",
-        //   "rgba(75, 192, 192, 1)",
-        //   "rgba(153, 102, 255, 1)",
-        //   "rgba(255, 159, 64, 1)",
-        // ],
-        borderColor: "black",
-        borderWidth: 4,
+        borderColor: "transparent",
+        borderWidth: 0,
+        radius: "100%",
       },
     ],
   };
@@ -63,16 +57,13 @@ const PieYTDAquisitions = ({ apiData }) => {
     },
   };
   return (
-    <div className="w-full h-full bg-white border-4 border-black rounded-md shadow-neub">
-      <div className="flex items-center justify-center h-24 border-b-4 border-black bg-brutalGreen">
-        <p className="font-bold text-center md:text-4xl ">YTD Properties</p>
-      </div>
+    <CardLayout title="YTD Properies Added">
       {getYTDbyState().length !== 0 ? (
         <Pie data={data} options={options} />
       ) : (
         <p className="mt-4 text-center">No YTD yet for this year...</p>
       )}
-    </div>
+    </CardLayout>
   );
 };
 

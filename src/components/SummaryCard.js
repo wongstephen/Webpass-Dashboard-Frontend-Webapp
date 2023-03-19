@@ -1,16 +1,19 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SummaryCard = ({ title, numbers, date }) => {
+const SummaryCard = ({ title, numbers, icon, date }) => {
   return (
-    <div
-      className={`flex flex-col items-center justify-start pb-16 bg-white border-4 border-black rounded-md w-72 shadow-neub -rotate-1`}
-    >
-      <div className="w-full p-4 font-bold text-center border-b-4 border-black rounded-t-md bg-brutalYellow">
-        <h2 className="text-lg"> {title}</h2>
+    <div className="flex gap-4 ">
+      <div className="flex w-8 h-8 text-white rounded-lg bg-mainBlue aspect-square place-self-center place-content-center">
+        <FontAwesomeIcon icon={icon} className="flex place-self-center" />
       </div>
-      <p className="mt-8 font-extrabold text-7xl md:text-8xl">
-        {numbers.toLocaleString("en-US")}
-      </p>
+      <div>
+        <h3 className="p-0 m-0 font-medium font-base">{title}</h3>
+        <p className="p-0 m-0 text-sm font-medium text-zinc-500">
+          {" "}
+          {numbers.toLocaleString("en-US")}
+        </p>
+      </div>
     </div>
   );
 };

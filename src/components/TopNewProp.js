@@ -1,16 +1,18 @@
 import React from "react";
 import getTopNewProp from "./functions/getTopNewProp";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import CardLayout from "./CardLayout";
 
 const TopTenTable = (data) => {
   const topTenArr = getTopNewProp(data);
   return (
     <table className="w-full">
       <thead>
-        <tr className="text-left">
+        <tr className="text-xs text-left md:text-base">
           <th>Address</th>
           <th>City</th>
           <th>State</th>
-          <th>Date Added</th>
+          <th>Added</th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +20,7 @@ const TopTenTable = (data) => {
           topTenArr.map((el, idx) => {
             const date = new Date(el.created_at);
             return (
-              <tr key={idx}>
+              <tr key={idx} className="text-xs">
                 <td>{el.address}</td>
                 <td>{el.city_state.split(", ")[0]}</td>
                 <td>{el.city_state.split(", ")[1]}</td>
@@ -36,16 +38,9 @@ const TopTenTable = (data) => {
 
 const TopNewProp = (data) => {
   return (
-    <div className="w-full h-full bg-white border-4 border-black rounded-md shadow-neub">
-      <div className="flex items-center justify-center h-24 border-b-4 border-black bg-brutalPeach">
-        <p className="font-bold text-center md:text-4xl ">
-          Newest 10 Properties
-        </p>
-      </div>
-      <div className="p-4">
-        <TopTenTable data={data} />
-      </div>
-    </div>
+    <CardLayout title="Latest 10 Properties" icon={faPlus}>
+      <TopTenTable data={data} />
+    </CardLayout>
   );
 };
 

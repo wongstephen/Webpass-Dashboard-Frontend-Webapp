@@ -3,6 +3,7 @@ import BarChart from "./BarChart";
 
 // calculations
 import getCountPerState from "./functions/getCountPerState";
+import CardLayout from "./CardLayout";
 
 const BarChartPropByState = ({ apiData }) => {
   const sorted = Object.keys(getCountPerState(apiData))
@@ -18,20 +19,20 @@ const BarChartPropByState = ({ apiData }) => {
       {
         label: "No. of Properties",
         data: Object.values(sorted),
-        backgroundColor: ["#ffb443"],
-        hoverBackgroundColor: ["#ffb44395"],
+        backgroundColor: ["#006EF3"],
+        hoverBackgroundColor: ["#006EF3"],
         borderColor: "black",
-        borderWidth: 2,
-        hoverBorderWidth: 6,
+        borderWidth: 0,
+        hoverBorderWidth: 2,
         minBarLength: 10,
-        borderRadius: 5,
+        borderRadius: 0,
       },
     ],
   };
 
   let chartOptions = {
     categoryPercentage: 1,
-    barPercentage: 0.5,
+    barPercentage: 0.95,
     scales: {
       x: {
         grid: {
@@ -44,7 +45,7 @@ const BarChartPropByState = ({ apiData }) => {
           color: "black",
           font: {
             size: 10,
-            weight: "bold",
+            weight: "light",
           },
         },
         position: "bottom",
@@ -52,7 +53,7 @@ const BarChartPropByState = ({ apiData }) => {
       y: {
         min: 0,
         max: 1500,
-        label: "test",
+        // label: "test",
         grid: {
           color: "#7385de20",
           tickColor: "#7385de",
@@ -77,7 +78,7 @@ const BarChartPropByState = ({ apiData }) => {
     layout: {
       // padding: 25,
     },
-    resizeDelay: 1000,
+    resizeDelay: 1500,
     plugins: {
       legend: {
         display: false,
@@ -96,14 +97,9 @@ const BarChartPropByState = ({ apiData }) => {
   };
 
   return (
-    <div className="w-full h-auto max-w-5xl mx-auto mt-16 bg-white border-4 border-black rounded-md shadow-neub">
-      <div className="flex flex-col items-center justify-center w-full h-24 border-b-4 border-black bg-brutalBlue font-Roboto">
-        <p className="font-bold text-center md:text-4xl ">
-          Total Properties Served by State
-        </p>
-      </div>
+    <CardLayout title="Total Properties by State">
       <BarChart chartData={chartData} options={chartOptions} />
-    </div>
+    </CardLayout>
   );
 };
 

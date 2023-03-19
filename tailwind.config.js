@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       base: ["Roboto", "sans-serif"],
+      title: ["Urbanist", " sans-serif"],
     },
     extend: {
       boxShadow: {
@@ -17,6 +18,8 @@ module.exports = {
         brutalBeige: "#f5ebd7",
         brutalPurple: "#7385de",
         brutalPeach: "#7385de",
+        mainBlue: "#006EF3",
+        mainGray: "#EDEEF2",
       },
     },
   },

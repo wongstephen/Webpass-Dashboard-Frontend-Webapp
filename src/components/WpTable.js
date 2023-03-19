@@ -1,13 +1,10 @@
 import React from "react";
 import { useTable, usePagination } from "react-table";
+import CardLayout from "./CardLayout";
 
 const WPTable = ({ apiData }) => {
   const columns = React.useMemo(
     () => [
-      // {
-      //   Header: "ID",
-      //   accessor: "id",
-      // },
       {
         Header: "Address",
         accessor: "addr",
@@ -24,10 +21,6 @@ const WPTable = ({ apiData }) => {
         Header: "Zip",
         accessor: "zip",
       },
-      // {
-      //   Header: "Created",
-      //   accessor: "created",
-      // },
     ],
     []
   );
@@ -68,7 +61,7 @@ const WPTable = ({ apiData }) => {
       {
         columns,
         data,
-        initialState: { pageIndex: 0, pageSize: 100 },
+        initialState: { pageIndex: 0, pageSize: 20 },
       },
       usePagination
     );
@@ -92,7 +85,7 @@ const WPTable = ({ apiData }) => {
             {page.map((row, i) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
+                <tr {...row.getRowProps()} className="text-xs lg:text-base">
                   {row.cells.map((cell) => {
                     return (
                       <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -107,137 +100,72 @@ const WPTable = ({ apiData }) => {
           Pagination can be built however you'd like. 
           This is just a very basic UI implementation:
         */}
-        <div className="flex flex-wrap items-center justify-center w-full mx-auto mt-8">
-          <button
-            className="px-2 py-1 mr-2 border-4 border-black shadow-neub bg-brutalBlue"
-            onClick={() => gotoPage(0)}
-            disabled={!canPreviousPage}
-          >
-            {"<<"}
-          </button>
-          <button
-            className="px-2 py-1 mr-2 border-4 border-black shadow-neub bg-brutalPurple"
-            onClick={() => previousPage()}
-            disabled={!canPreviousPage}
-          >
-            {"<"}
-          </button>
-          <button
-            onClick={() => nextPage()}
-            disabled={!canNextPage}
-            className="px-2 py-1 mr-2 border-4 border-black shadow-neub bg-brutalPurple "
-          >
-            {">"}
-          </button>
-          <button
-            className="px-2 py-1 mr-2 border-4 border-black shadow-neub bg-brutalBlue"
-            onClick={() => gotoPage(pageCount - 1)}
-            disabled={!canNextPage}
-          >
-            {">>"}
-          </button>
-          <span className="mx-8">
-            Page{" "}
-            <strong>
-              {pageIndex + 1} of {pageOptions.length}
-            </strong>{" "}
-          </span>
-          <span>
-            Go to page:{" "}
-            <input
-              type="number"
-              defaultValue={pageIndex + 1}
+        <div className="flex flex-col items-center justify-center w-full gap-2 mx-auto mt-2 text-xs">
+          <div>
+            <button
+              className="px-2 py-1 mr-2 border-black bg-mainBlue"
+              onClick={() => gotoPage(0)}
+              disabled={!canPreviousPage}
+            >
+              {"<<"}
+            </button>
+            <button
+              className="px-2 py-1 mr-2 border-black bg-mainGray "
+              onClick={() => previousPage()}
+              disabled={!canPreviousPage}
+            >
+              {"<"}
+            </button>
+            <button
+              onClick={() => nextPage()}
+              disabled={!canNextPage}
+              className="px-2 py-1 mr-2 border-black bg-mainGray "
+            >
+              {">"}
+            </button>
+            <button
+              className="px-2 py-1 mr-2 border-black bg-mainBlue"
+              onClick={() => gotoPage(pageCount - 1)}
+              disabled={!canNextPage}
+            >
+              {">>"}
+            </button>
+          </div>
+          <div>
+            <span className="mx-auto">
+              Page{" "}
+              <strong>
+                {pageIndex + 1} of {pageOptions.length}
+              </strong>{" "}
+            </span>
+          </div>
+          <div>
+            <select
+              value={pageSize}
+              className="px-2 py-1 bg-mainGray"
               onChange={(e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                gotoPage(page);
+                setPageSize(Number(e.target.value));
               }}
-              style={{ width: "100px" }}
-            />
-          </span>{" "}
-          <select
-            value={pageSize}
-            className="px-2 py-1 mr-2 border-4 border-black shadow-neub bg-brutalGreen"
-            onChange={(e) => {
-              setPageSize(Number(e.target.value));
-            }}
-          >
-            {[10, 20, 30, 40, 50, 100, 200].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
+            >
+              {[10, 20, 30, 40, 50, 100, 200].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  Show {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </>
     );
   }
 
-  const Filter = () => {
-    return (
-      <div className="w-full mt-12 ml-12">
-        {/* 
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          className="inline w-12 h-12"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
-          />
-        </svg>
-        
-        <p className="inline ml-8 text-lg font-bold">Filter By</p>
-        <span className="p-6 ml-4 font-bold tracking-wider text-white bg-purple-600 border-4 border-black rounded-md shadow-neub">
-          {" "}
-          For Placement only. Filter feature TBD
-        </span>
-
-        <div className="mt-8">
-          <p className="inline mr-8">State</p>
-          {["WA", "CA", "OR", "IA", "GA"].map((state) => {
-            return (
-              <button className="px-4 py-1 mr-4 border-4 border-black shadow-neub bg-brutalYellow">
-                {state}
-              </button>
-            );
-          })}
-        </div>
-        <div className="mt-8">
-          <p className="inline mr-8">City</p>
-          {["Seattle", "Tacoma", "Kirkland", "Renton", "Beaverton"].map(
-            (state) => {
-              return (
-                <button className="px-4 py-1 mr-4 border-4 border-black shadow-neub bg-brutalRed">
-                  {state}
-                </button>
-              );
-            }
-          )}
-        </div> */}
-      </div>
-    );
-  };
-
   const options = {
     reponsive: true,
   };
   return (
-    <div className="flex flex-wrap w-full mt-16 bg-white border-4 border-black rounded-md shadow-neub">
-      <div className="flex items-center justify-center flex-1 w-full h-20 border-b-4 border-black bg-brutalGreen">
-        <p className="font-bold text-center md:text-4xl ">
-          Full List of Addresses
-        </p>
-      </div>
-      <Filter />
-      <div className="w-full p-8 mt-18">
-        <Table columns={columns} data={data} options={options} />
-      </div>
-    </div>
+    <CardLayout title="Detailed Properties">
+      <Table columns={columns} data={data} options={options} />
+    </CardLayout>
   );
 };
 
