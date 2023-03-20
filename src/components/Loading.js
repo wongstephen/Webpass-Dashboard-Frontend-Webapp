@@ -1,19 +1,17 @@
 import React from "react";
 
-// Components
-import SummaryCardSkeleton from "./SummaryCardSkeleton";
-import BarChartPropByStateSkeleton from "./BarChartPropByStateSkeleton";
-
 const Loading = () => {
   return (
-    <div className="relative max-w-5xl px-4 mx-auto mx:px-0 -top-40">
-      <div className="flex flex-wrap justify-center w-full gap-4 md:px-0 lg:justify-between">
-        <SummaryCardSkeleton />
-        <SummaryCardSkeleton />
-        <SummaryCardSkeleton />
-      </div>
-      <BarChartPropByStateSkeleton />
-      <BarChartPropByStateSkeleton />
+    <div className="grid w-full gap-4 mt-2 border-dashed auto-cols-fr border-1 border-x-orange-400">
+      <PlaceHolder />
+    </div>
+  );
+};
+
+const PlaceHolder = () => {
+  return (
+    <div className="min-h-[20rem] bg-white rounded-md flex items-center justify-center">
+      <img src="assets/throbber.gif" alt="loading" />
     </div>
   );
 };
