@@ -28,37 +28,40 @@ const App = () => {
   });
 
   return (
-    <div className="px-4 mx-auto max-w-7xl">
-      <Header />
+    <div className="bg-[#edeef2] dark:bg-[#4E31AA] dark:text-white w-full h-full gap-4 pb-20">
+      <div className="px-4 mx-auto max-w-7xl">
+        <Header />
 
-      {loading && <Loading />}
+        {loading && <Loading />}
 
-      {!loading && error && (
-        <p className="p-12 text-center">something went wrong...</p>
-      )}
+        {!loading && error && (
+          <p className="p-12 text-center">something went wrong...</p>
+        )}
 
-      {!loading && !error && (
-        <main className="grid gap-4 mt-4 md:grid-cols-12 md:grid-flow-row">
-          <div className="col-span-6">
-            <Summary data={data} />
-          </div>
-          <div className="col-span-6">
-            <TopNewProp data={data} />
-          </div>
-          <div className="col-span-6 md:order-5">
-            <PieYTDAquisitions apiData={data} />
-          </div>
-          <div className="col-span-6">
-            <BarChartPropByState apiData={data} date={date} />
-          </div>
-          <div className="col-span-6">
-            <LineCountPerYear apiData={data} />
-          </div>
-          <div className="col-span-6 md:order-6">
-            <WpTable apiData={data} />
-          </div>
-        </main>
-      )}
+        {!loading && !error && (
+          <main className="grid gap-4 mt-4 md:grid-cols-12 md:grid-flow-row">
+            <div className="col-span-6">
+              <Summary data={data} />
+            </div>
+            <div className="col-span-6">
+              <TopNewProp data={data} />
+            </div>
+            <div className="col-span-6 md:order-5">
+              <PieYTDAquisitions apiData={data} />
+            </div>
+
+            <div className="col-span-6">
+              <BarChartPropByState apiData={data} date={date} />
+            </div>
+            <div className="col-span-6">
+              <LineCountPerYear apiData={data} />
+            </div>
+            <div className="col-span-6 md:order-6">
+              <WpTable apiData={data} />
+            </div>
+          </main>
+        )}
+      </div>
     </div>
   );
 };

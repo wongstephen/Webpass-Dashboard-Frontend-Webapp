@@ -2,6 +2,7 @@ import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import CardLayout from "./CardLayout";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -57,7 +58,7 @@ const PieYTDAquisitions = ({ apiData }) => {
     },
   };
   return (
-    <CardLayout title="YTD Properies Added">
+    <CardLayout title="YTD Properies Added" icon={faPlus}>
       {getYTDbyState().length !== 0 ? (
         <Pie data={data} options={options} />
       ) : (

@@ -1,11 +1,16 @@
 import React from "react";
 import BarChart from "./BarChart";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 // calculations
 import getCountPerState from "./functions/getCountPerState";
 import CardLayout from "./CardLayout";
+import useTheme from "../hooks/useTheme";
 
 const BarChartPropByState = ({ apiData }) => {
+  const { isLight } = useTheme();
+  const theme = isLight ? "black" : "white";
+
   const sorted = Object.keys(getCountPerState(apiData))
     .sort()
     .reduce((acc, key) => {
@@ -21,7 +26,7 @@ const BarChartPropByState = ({ apiData }) => {
         data: Object.values(sorted),
         backgroundColor: ["#006EF3"],
         hoverBackgroundColor: ["#006EF3"],
-        borderColor: "black",
+        borderColor: theme,
         borderWidth: 0,
         hoverBorderWidth: 2,
         minBarLength: 10,
@@ -42,7 +47,7 @@ const BarChartPropByState = ({ apiData }) => {
           borderColor: "#7385de",
         },
         ticks: {
-          color: "black",
+          color: theme,
           font: {
             size: 10,
             weight: "light",
@@ -60,7 +65,7 @@ const BarChartPropByState = ({ apiData }) => {
           borderColor: "#7385de",
         },
         ticks: {
-          color: "black",
+          color: theme,
           font: {
             size: 10,
             weight: "bold",
@@ -97,7 +102,7 @@ const BarChartPropByState = ({ apiData }) => {
   };
 
   return (
-    <CardLayout title="Total Properties by State">
+    <CardLayout title="Total Properties by State" icon={faPlus}>
       <BarChart chartData={chartData} options={chartOptions} />
     </CardLayout>
   );

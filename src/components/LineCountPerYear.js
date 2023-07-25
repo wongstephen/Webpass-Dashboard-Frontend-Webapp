@@ -2,9 +2,14 @@ import React from "react";
 import LineChart from "./LineChart";
 import getPropPerYear from "./functions/getPropByYear";
 import CardLayout from "./CardLayout";
+import useTheme from "../hooks/useTheme";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const LineCountPerYear = ({ apiData, date }) => {
+const LineCountPerYear = ({ apiData }) => {
   const yearsPropertyCount = getPropPerYear(apiData);
+  const { isLight } = useTheme();
+  const theme = isLight ? "black" : "white";
+
   const countPerYearAcculated = Object.values(yearsPropertyCount).map(
     (el, idx) => {
       for (let i = 0; i < idx; i++) {
@@ -21,7 +26,7 @@ const LineCountPerYear = ({ apiData, date }) => {
         data: countPerYearAcculated,
         backgroundColor: ["#006EF3"],
         hoverBackgroundColor: ["#006EF395"],
-        borderColor: "black",
+        borderColor: theme,
         borderWidth: 1,
         hoverBorderWidth: 1,
         borderRadius: 1,
@@ -41,11 +46,11 @@ const LineCountPerYear = ({ apiData, date }) => {
           borderColor: "#7385de",
         },
         ticks: {
-          color: "#black",
+          color: theme,
           textAlign: "center",
           font: {
-            size: 12,
-            // weight: "light",
+            size: 10,
+            weight: "light",
           },
           align: "start",
         },
@@ -58,7 +63,7 @@ const LineCountPerYear = ({ apiData, date }) => {
           tickColor: "#bbd700",
         },
         ticks: {
-          color: "black",
+          color: theme,
           font: {
             size: 12,
             // weight: "bold",
@@ -91,7 +96,7 @@ const LineCountPerYear = ({ apiData, date }) => {
   };
 
   return (
-    <CardLayout title="Total Properties Served by Year">
+    <CardLayout title="Total Properties Served by Year" icon={faPlus}>
       <LineChart chartData={chartData} options={chartOptions} />
     </CardLayout>
   );

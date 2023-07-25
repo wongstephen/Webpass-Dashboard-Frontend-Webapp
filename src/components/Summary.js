@@ -1,6 +1,5 @@
 import React from "react";
 //font icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileCircleQuestion,
   faCalendar,

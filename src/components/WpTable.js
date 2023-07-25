@@ -1,6 +1,7 @@
 import React from "react";
 import { useTable, usePagination } from "react-table";
 import CardLayout from "./CardLayout";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const WPTable = ({ apiData }) => {
   const columns = React.useMemo(
@@ -110,7 +111,7 @@ const WPTable = ({ apiData }) => {
               {"<<"}
             </button>
             <button
-              className="px-2 py-1 mr-2 border-black bg-mainGray "
+              className="px-2 py-1 mr-2 border-black bg-mainGray dark:bg-zinc-500 "
               onClick={() => previousPage()}
               disabled={!canPreviousPage}
             >
@@ -119,7 +120,7 @@ const WPTable = ({ apiData }) => {
             <button
               onClick={() => nextPage()}
               disabled={!canNextPage}
-              className="px-2 py-1 mr-2 border-black bg-mainGray "
+              className="px-2 py-1 mr-2 border-black bg-mainGray dark:bg-zinc-500"
             >
               {">"}
             </button>
@@ -142,7 +143,7 @@ const WPTable = ({ apiData }) => {
           <div>
             <select
               value={pageSize}
-              className="px-2 py-1 bg-mainGray"
+              className="px-2 py-1 bg-mainGray dark:bg-zinc-500 "
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
               }}
@@ -163,7 +164,7 @@ const WPTable = ({ apiData }) => {
     reponsive: true,
   };
   return (
-    <CardLayout title="Detailed Properties">
+    <CardLayout title="Detailed Properties" icon={faPlus}>
       <Table columns={columns} data={data} options={options} />
     </CardLayout>
   );

@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CardLayout = ({ title, icon, children }) => {
   return (
-    <section className="h-full gap-4 p-4 bg-white rounded shadow-md">
+    <section className="h-full gap-4 p-4 bg-white rounded shadow-md dark:bg-[#3A1078]">
       <div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-zinc-400 aspect-square">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-zinc-400 dark:bg-zinc-800 aspect-square">
             <FontAwesomeIcon icon={icon} className="w-6 h-6 text-white" />
           </div>
-          <h2 className="text-xl font-medium">{title}</h2>
+          <h2 className="text-xl font-medium dark:text-neutral-200">{title}</h2>
         </div>
         <hr className="mt-4" />
       </div>
